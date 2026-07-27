@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quality Monitoring</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="sea.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+
+        <h1>💧 WATER QUALITY MONITORING</h1>
+
+        <!-- Header -->
+        <div class="header">
+    <h3>System Status</h3>
+
+    <h2 id="systemStatus">Checking...</h2>
+
+    <p>
+        Last Updated :
+        <span id="lastUpdated">--</span>
+    </p>
+</div>
+            <div class="live">
+                <h3>Live Data</h3>
+            </div>
+
+            <div class="datetime">
+                <p>Date : <span id="currentDate"></span></p>
+                <p>Time : <span id="currentTime"></span></p>
+            </div>
+
+        </div>
+
+        <!-- Live Cards -->
+
+        <div class="card-container">
+
+            <div class="card">
+                <h3>pH</h3>
+                <h2 id="livePh">--</h2>
+            </div>
+
+            <div class="card">
+                <h3>TDS</h3>
+                <h2 id="liveTds">--</h2>
+            </div>
+
+            <div class="card">
+                <h3>Turbidity</h3>
+                <h2 id="liveTurbidity">--</h2>
+            </div>
+
+            <div class="card">
+                <h3>EC</h3>
+                <h2 id="liveEc">--</h2>
+            </div>
+
+        </div>
+
+        <!-- Historical Report -->
+
+        <div class="history">
+
+            <h2>Historical Report</h2>
+
+            <div class="filters">
+
+                <div>
+                    <label>From Date</label>
+                    <input type="date" id="fromDate">
+                </div>
+
+                <div>
+                    <label>To Date</label>
+                    <input type="date" id="toDate">
+                </div>
+
+                <div>
+                    <label>From Time</label>
+                    <input type="time" id="fromTime">
+                </div>
+
+                <div>
+                    <label>To Time</label>
+                    <input type="time" id="toTime">
+                </div>
+
+            </div>
+
+            <button id="getReportBtn">
+                GET REPORT
+            </button>
+            <h1>Past Data</h1>
+
+        </div>
+
+        <!-- Report Cards -->
+
+        <div class="report">
+
+            <div class="card">
+                <h3>Average pH</h3>
+                <h2 id="reportPh">--</h2>
+            </div>
+
+            <div class="card">
+                <h3>Average TDS</h3>
+                <h2 id="reportTds">--</h2>
+            </div>
+
+            <div class="card">
+                <h3>Average Turbidity</h3>
+                <h2 id="reportTurbidity">--</h2>
+            </div>
+
+            <div class="card">
+                <h3>Average EC</h3>
+                <h2 id="reportEc">--</h2>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function updateDateTime() {
+
+            const now = new Date();
+
+            document.getElementById("currentDate").textContent =
+                now.toLocaleDateString();
+
+            document.getElementById("currentTime").textContent =
+                now.toLocaleTimeString();
+
+        }
+
+        updateDateTime();
+
+        setInterval(updateDateTime, 1000);
+    </script>
+
+    <!-- External JavaScript -->
+    <script src="google-sheet.js"></script>
+
+</body>
+
+</html>
