@@ -46,7 +46,12 @@ document.getElementById("liveEc").textContent = data.ecValue;
 document.getElementById("liveTurbidity").textContent = data.turbidityValue;
 
 // Last Updated
+console.log("Response:", data);
+console.log("Timestamp:", data.timestamp);
+
 const lastUpdate = new Date(data.timestamp);
+
+console.log("Parsed Date:", lastUpdate);
 document.getElementById("lastUpdated").textContent =
 lastUpdate.toLocaleString();
 
